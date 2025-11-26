@@ -7,38 +7,37 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const handleBuy = async (amount, product) => {
-  if (!stripePromise) {
-    alert('Stripe not loaded — check keys, you madman.');
-    return;
-  }
-  setLoading(true);
-  try {
-    const stripe = await stripePromise;
-    if (!stripe) throw new Error('Stripe failed to load');
-    
-    const response = await fetch('/api/create-checkout-session', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount, product }),
-    });
-    
-    if (!response.ok) {
-      const errText = await response.text();
-      throw new Error(`API error: ${response.status} - ${errText}`);
+    if (!stripePromise) {
+      alert('Stripe not loaded — check keys, you madman.');
+      return;
     }
-    
-    const session = await response.json();
-    if (!session.id) throw new Error('No session ID from API');
-    
-    const result = await stripe.redirectToCheckout({ sessionId: session.id });
-    if (result.error) throw new Error(result.error.message);
-  } catch (error) {
-    console.error('Buy error:', error); // Logs to browser console for debug
-    alert(`Send failed: ${error.message}. Check console or keys.`);
-  } finally {
-    setLoading(false); // ALWAYS RESET LOADING, NO MATTER WHAT
-  }
-};
+    setLoading(true);
+    try {
+      const stripe = await stripePromise;
+      if (!stripe) throw new Error('Stripe failed to load');
+      
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount, product }),
+      });
+      
+      if (!response.ok) {
+        const errText = await response.text();
+        throw new Error(`API error: ${response.status} - ${errText}`);
+      }
+      
+      const session = await response.json();
+      if (!session.id) throw new Error('No session ID from API');
+      
+      const result = await stripe.redirectToCheckout({ sessionId: session.id });
+      if (result.error) throw new Error(result.error.message);
+    } catch (error) {
+      console.error('Buy error:', error);
+      alert(`Send failed: ${error.message}. Check console or keys.`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -62,9 +61,16 @@ export default function Home() {
           {loading ? 'SENDING...' : 'Ford Unlock - $99.99'}
         </button>
       </div>
-      <style jsx global>{`
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-      `}</style>
+      <style 
+        dangerouslySetInnerHTML={{ 
+          __html: `
+            @keyframes spin { 
+              0% { transform: rotate(0deg); } 
+              100% { transform: rotate(360deg); } 
+            }
+          ` 
+        }} 
+      />
     </div>
   );
 }
