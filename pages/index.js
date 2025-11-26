@@ -131,3 +131,67 @@ export default function Home() {
     </div>
   );
 }
+        <button 
+          onClick={() => handleBuy(8999, 'FCA SGW Unlock')} 
+          disabled={loading}
+          style={{ 
+            background: 'red', 
+            color: 'black', 
+            padding: '15px 30px', 
+            fontSize: '1.2em', 
+            border: 'none', 
+            cursor: 'pointer', 
+            borderRadius: '10px', 
+            fontWeight: 'bold' 
+          }}
+        >
+          {loading ? 'SENDING...' : 'FCA Unlock - $89.99'}
+        </button>
+        <button 
+          onClick={() => handleBuy(12999, 'Toyota Denso Gen5 Unlock')} 
+          disabled={loading}
+          style={{ 
+            background: 'red', 
+            color: 'black', 
+            padding: '15px 30px', 
+            fontSize: '1.2em', 
+            border: 'none', 
+            cursor: 'pointer', 
+            borderRadius: '10px', 
+            fontWeight: 'bold' 
+          }}
+        >
+          {loading ? 'SENDING...' : 'Toyota Unlock - $129.99'}
+        </button>
+        <button 
+          onClick={() => handleBuy(34900, '5-Key Bundle Unlock')} 
+          disabled={loading}
+          style={{ 
+            background: 'orange', 
+            color: 'black', 
+            padding: '15px 30px', 
+            fontSize: '1.2em', 
+            border: 'none', 
+            cursor: 'pointer', 
+            borderRadius: '10px', 
+            fontWeight: 'bold' 
+          }}
+        >
+          {loading ? 'SENDING...' : '5-Key Bundle - $349'}
+        </button>
+        <button 
+          onClick={() => handleBuy(99900, 'Shop License (Unlimited VINs)')} 
+          disabled={loading}
+          style={{ 
+            background: 'purple', 
+            color: 'white', 
+            padding: '15px 30px', 
+            fontSize: '1.2em', 
+            border: 'none', 
+            cursor: 'pointer', 
+            borderRadius: '10px', 
+            fontWeight: 'bold' 
+          }}
+        >
+          {loading ? 'SENDING...' : 'Shop License - $999'}
+        </button>
