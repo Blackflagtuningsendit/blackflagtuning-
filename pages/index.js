@@ -7,17 +7,38 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const handleBuy = async (amount, product) => {
-    setLoading(true);
+  if (!stripePromise) {
+    alert('Stripe not loaded — check keys, you madman.');
+    return;
+  }
+  setLoading(true);
+  try {
     const stripe = await stripePromise;
+    if (!stripe) throw new Error('Stripe failed to load');
+    
     const response = await fetch('/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ amount, product }),
     });
+    
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(`API error: ${response.status} - ${errText}`);
+    }
+    
     const session = await response.json();
+    if (!session.id) throw new Error('No session ID from API');
+    
     const result = await stripe.redirectToCheckout({ sessionId: session.id });
-    if (result.error) alert(result.error.message);
-    setLoading(false);
+    if (result.error) throw new Error(result.error.message);
+  } catch (error) {
+    console.error('Buy error:', error); // Logs to browser console for debug
+    alert(`Send failed: ${error.message}. Check console or keys.`);
+  } finally {
+    setLoading(false); // ALWAYS RESET LOADING, NO MATTER WHAT
+  }
+};
   };
 
   return (
