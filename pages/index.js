@@ -42,8 +42,22 @@ export default function Home() {
 
   return (
     <div style={{ background: 'black', color: 'red', textAlign: 'center', minHeight: '100vh', padding: '20px' }}>
-      <div style={{ fontSize: '30vw', filter: 'drop-shadow(0 0 40px red)', animation: 'spin 20s linear infinite' }}>☠️</div>
-      <h1 style={{ fontSize: '8vw', letterSpacing: '10px', textShadow: '0 0 30px red' }}>BLACK FLAG TUNING</h1>
+      <div 
+        style={{ 
+          fontSize: '30vw', 
+          filter: 'drop-shadow(0 0 40px red)', 
+          animation: 'spin 20s linear infinite',
+          transform: 'translate(-50%, -50%)',
+          position: 'absolute',
+          top: '50%',
+          left: '50%'
+        }}
+      >
+        ☠️
+      </div>
+      <h1 style={{ fontSize: '8vw', letterSpacing: '10px', textShadow: '0 0 30px red', position: 'absolute', bottom: '10%', left: '50%', transform: 'translateX(-50%)' }}>
+        BLACK FLAG TUNING
+      </h1>
       <p style={{ fontSize: '2vw', margin: '20px' }}>Unlock Keys — One Tap To Freedom</p>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
         <button 
@@ -61,16 +75,7 @@ export default function Home() {
           {loading ? 'SENDING...' : 'Ford Unlock - $99.99'}
         </button>
       </div>
-      <style 
-        dangerouslySetInnerHTML={{ 
-          __html: `
-            @keyframes spin { 
-              0% { transform: rotate(0deg); } 
-              100% { transform: rotate(360deg); } 
-            }
-          ` 
-        }} 
-      />
+      <style dangerouslySetInnerHTML={{ __html: '@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }' }} />
     </div>
   );
 }
