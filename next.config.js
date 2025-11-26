@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  telemetry: false,  // Shut up, Next.js
-};
+const nextConfig = {};
 
 module.exports = nextConfig;
