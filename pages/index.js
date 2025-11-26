@@ -126,11 +126,7 @@ export default function Home() {
         >
           {loading ? 'SENDING...' : 'Ford Unlock - $99.99'}
         </button>
-      </div>
-      <style dangerouslySetInnerHTML={{ __html: '@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }' }} />
-    </div>
-  );
-      <button 
+        <button 
           onClick={() => handleBuy(8999, 'FCA SGW Unlock')} 
           disabled={loading}
           style={{ 
@@ -194,5 +190,9 @@ export default function Home() {
         >
           {loading ? 'SENDING...' : 'Shop License - $999'}
         </button>
-
+      </div>
+      <style dangerouslySetInnerHTML={{ __html: '@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }' }} />
+    </div>
+  );
+}
 
