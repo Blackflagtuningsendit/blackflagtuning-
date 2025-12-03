@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mopar V8 God Simulator - Black Flag Tuning</title>
+    <style>
+        body { background: #000; color: #ff0000; font-family: 'Impact', sans-serif; margin: 0; padding: 0; text-align: center; }
+        .container { display: flex; flex-direction: column; align-items: center; height: 100vh; justify-content: space-between; padding: 20px; }
+        .skull { font-size: 15vw; animation: spin 20s linear infinite; text-shadow: 0 0 40px red; margin-top: 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        h1 { font-size: 6vw; letter-spacing: 5px; text-shadow: 0 0 30px red; margin: 10px 0; }
+        .sim-section { width: 80%; max-width: 800px; background: rgba(255,0,0,0.1); border: 2px solid red; border-radius: 10px; padding: 20px; margin: 20px 0; }
+        .input-group { margin: 10px 0; }
+        label { font-size: 1.5vw; display: block; margin-bottom: 5px; }
+        select, input { background: black; color: red; border: 1px solid red; padding: 10px; width: 100%; font-size: 1.2vw; }
+        .output { margin-top: 20px; font-size: 2vw; text-shadow: 0 0 10px red; }
+        button { background: red; color: black; padding: 15px 30px; font-size: 1.5vw; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px; font-weight: bold; }
+        button:hover { box-shadow: 0 0 20px red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="skull">☠️</div>
+        <h1>MOPAR V8 GOD SIMULATOR</h1>
+        <div class="sim-section">
+            <div class="input-group">
+                <label>Base Engine</label>
+                <select>
+                    <option>Hemi 5.7L</option>
+                    <option>Hemi 6.4L SRT</option>
+                    <option>Hellcat 6.2L Supercharged</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Cam Package</label>
+                <select>
+                    <option>Stock</option>
+                    <option>Comp Cams Stage 2 (+60HP)</option>
+                    <option>Lunati Voodoo (+80HP)</option>
+                    <option>Mopar Performance Stage 3 (+120HP)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Headers</label>
+                <select>
+                    <option>Stock</option>
+                    <option>Kooks Long Tubes (+25HP)</option>
+                    <option>Flowmaster Cat-Back (+15HP)</option>
+                    <option>Mopar Performance (+20HP)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Gear Ratio</label>
+                <input type="number" step="0.1" value="3.73" min="2.5" max="5.0">
+            </div>
+            <div class="input-group">
+                <label>Boost (PSI)</label>
+                <input type="number" step="1" value="0" min="0" max="20">
+            </div>
+            <button onclick="simulateBuild()">SIMULATE BUILD</button>
+            <div class="output" id="output">Predicted HP: ? | TQ: ? | 1/4 Mile: ?s @ ?mph | Grenade Risk: ?%</div>
+        </div>
+        <p>Buy Parts & Book Dyno at blackflagtuning.com</p>
+    </div>
+    <script>
+        function simulateBuild() {
+            document.getElementById('output').innerText = 'Predicted HP: 650 | TQ: 600 | 1/4 Mile: 10.8s @ 132mph | Grenade Risk: 45%';
+        }
+    </script>
+</body>
+</html>
