@@ -48,3 +48,4 @@ export default async function handler(req, res) {
     res.status(405).end('Method Not Allowed');
   }
 }
+<div className="swag-section">   <h2 style={{ color: '#ff0000', textAlign: 'center', margin: '3rem 0 2rem' }}>     OFFICIAL BLACK FLAG SWAG   </h2>   <div className="grid">     <a href="/shop/patriot-pirate-tee" className="swag-card">Patriot Pirate Tee – $35</a>     <a href="/shop/black-flag-hoodie" className="swag-card">Black Flag Hoodie – $65</a>     <a href="/shop/betsy-ross-skull-hat" className="swag-card">Betsy Ross Skull Hat – $30</a>     <a href="/shop/custom-patch" className="swag-card">Custom Velcro Patch – $15</a>   </div>   <a href="/shop" className="all-swag-btn">SEE FULL STORE →</a> </div> 
